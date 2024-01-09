@@ -112,16 +112,16 @@ class _TOPIC_SETTINGState extends State<TOPIC_SETTING> {
 
   _connect() async {
     client = MqttServerClient(broker, clientId);
-    client.port = 1883;
+    client.port =your mqtt server port  ;
     client.keepAlivePeriod = 600;
 
     client.logging(on: true);
 
-    await client.connect("calvin", "CwInMg9BQ5r051v0");
+    await client.connect("username server", "password server");
     client.onDisconnected = _onDisconnected;
     final connMessage = MqttConnectMessage()
         .withClientIdentifier(clientId)
-        .authenticateAs('calvin', 'CwInMg9BQ5r051v0');
+        .authenticateAs('username server', 'password server');
 
     try {
       _subscribeToTopic();
